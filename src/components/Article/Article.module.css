@@ -1,0 +1,43 @@
+.Article {
+  width: 80%;
+  max-width: 1000px;
+  border: 1px solid black;
+  margin: 12px auto;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.headline {
+  display: flex;
+  flex-flow: column;
+}
+
+.articleInfo {
+  flex-basis: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: right;
+}
+
+.headline h1 {
+  font-size: 25px;
+  margin: 8px 20px 5px 20px;
+}
+
+.snippet {
+  margin: 2px 20px;
+  text-align: justify;
+}
+
+.typeOfMaterial {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.pubDate {
+  font-size: 12px;
+  margin: 5px;
+}

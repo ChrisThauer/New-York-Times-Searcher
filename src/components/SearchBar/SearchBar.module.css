@@ -1,0 +1,31 @@
+.SearchBar {
+  width: 500px;
+  margin: 15px auto;
+}
+
+.SearchBar input {
+  width: 70%;
+  font-size: 15px;
+  font-family: 'Quattrocento', serif;
+  height: 20px;
+}
+
+.SearchBar button {
+  width: 15%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  font-family: 'Quattrocento', serif;
+  border: none;
+  padding: 5px;
+  margin-left: 10px;
+  background-color: rgb(209, 209, 209);
+}
+
+.SearchBar button:hover {
+  background-color: rgb(156, 156, 156);
+}
+
+.SearchBar button.filter {
+  width: 30px;
+}

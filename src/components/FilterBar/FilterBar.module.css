@@ -1,0 +1,10 @@
+.FilterBar {
+  margin: 15px auto;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  width: 50%;
+  max-width: 500px;
+  justify-content: space-between;
+  font-size: 15px;
+}
