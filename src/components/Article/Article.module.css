@@ -8,6 +8,11 @@
   text-align: left;
 }
 
+.Article:hover {
+  background-color: rgb(236, 236, 236);
+  transition: linear .25s;
+}
+
 .headline {
   display: flex;
   flex-flow: column;
@@ -40,4 +45,9 @@
 .pubDate {
   font-size: 12px;
   margin: 5px;
+}
+
+.articleLink {
+  color: #000;
+  text-decoration: none;
 }

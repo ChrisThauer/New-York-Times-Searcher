@@ -20,8 +20,6 @@ class App extends Component {
     // Converts current date to YYYYMMDD format
     const date = new Date().toISOString().replace(/-/gi, '').slice(0, 8);
     this.setState({ maxDate: date });
-    const newDate = `${date.slice(0, 4)}-${date.slice(4,6)}-${date.slice(6,8)}`;
-    console.log(newDate);
   }
 
   onSearchChange = (event) => {
@@ -38,7 +36,6 @@ class App extends Component {
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        console.log(data.response.docs);
         this.setState({ articles: data.response.docs })
       })
       .catch(err => console.log(err));
@@ -71,6 +68,7 @@ class App extends Component {
       return article.type_of_material !== 'timestopic' ?
         <Article 
           key={article._id}
+          webURL={article.web_url}
           headline={article.headline.main}
           snippet={article.snippet}
           type={article.type_of_material}
