@@ -13,13 +13,14 @@ class App extends Component {
     filter: false,
     sortBy: '',
     minDate: '18510918',
-    maxDate: '18510918'
+    maxDate: '18510918',
+    currentDate: '18510918'
   }
 
   componentDidMount() {
     // Converts current date to YYYYMMDD format
     const date = new Date().toISOString().replace(/-/gi, '').slice(0, 8);
-    this.setState({ maxDate: date });
+    this.setState({ currentDate: date, maxDate: date });
   }
 
   onSearchChange = (event) => {
@@ -93,6 +94,7 @@ class App extends Component {
           <FilterBar
             maxDate={this.state.maxDate}
             minDate={this.state.minDate}
+            currentDate={this.state.currentDate}
             sortBy={this.onSortBy} 
             value={this.state.sortBy}
             changeMinDate={this.onChangeMinDate}
