@@ -14,7 +14,8 @@ class App extends Component {
     sortBy: '',
     minDate: '18510918',
     maxDate: '18510918',
-    currentDate: '18510918'
+    currentDate: '18510918',
+    error: false
   }
 
   componentDidMount() {
@@ -29,17 +30,24 @@ class App extends Component {
 
   onSearchSubmit = (event) => {
     // Connects to the NY Times API and searches based on the input search term and returns 10 articles.
-    let url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${API_KEY}`
-    url += `&q=${this.state.searchTerm}&begin_date=${this.state.minDate}&end_date=${this.state.maxDate}`;
+    let url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${API_KEY}&q=${this.state.searchTerm}`;
+    if (this.state.minDate.length === 8) {
+      url += `&begin_date=${this.state.minDate}`;
+    }
+    if (this.state.maxDate.length === 8) {
+      url += `&end_date=${this.state.maxDate}`;
+    }
     if (this.state.sortBy.length > 0) {
       url += `&sort=${this.state.sortBy}`;
     }
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        this.setState({ articles: data.response.docs })
+        this.setState({ articles: data.response.docs });
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        this.setState({ error: true });
+      });
     event.preventDefault();
   }
 
@@ -82,6 +90,8 @@ class App extends Component {
       articles = <p>Please search for articles</p>
     }
 
+    const error = <p>Error Loading Data</p>
+
     return (
       <div className="App">
         <h1>The New York Times Searcher</h1>
@@ -100,7 +110,7 @@ class App extends Component {
             changeMinDate={this.onChangeMinDate}
             changeMaxDate={this.onChangeMaxDate} /> 
         : null}
-        {articles}
+        {this.state.error ? error : articles}
       </div>
     );
   }
